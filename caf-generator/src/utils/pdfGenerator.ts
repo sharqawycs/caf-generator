@@ -218,17 +218,27 @@ export const generatePDF = async (data: FormData) => {
     pdf.text('Implementation &', 12, currentY + 8);
     pdf.text('Functions (40%)', 12, currentY + 15);
 
-    // Score subdivision boxes for Implementation - each grade column divided into sub-columns for marking
+    // Implementation description and marking boxes
     for (let i = 0; i < 5; i++) {
         const subdivisions = scoreSubdivisions[i];
         const subColWidth = colWidth / subdivisions.length;
 
-        // Create subdivision columns for score selection (empty boxes for marking)
+        // Large description box first
+        if (i % 2 === 0) {
+            pdf.setFillColor(...lightBlue);
+        } else {
+            pdf.setFillColor(220, 235, 255);
+        }
+        pdf.rect(50 + i * colWidth, currentY, colWidth, 42, 'F');
+        pdf.setDrawColor(0, 0, 0);
+        pdf.rect(50 + i * colWidth, currentY, colWidth, 42);
+
+        // Create subdivision columns for score selection (empty boxes for marking) below description
         for (let j = 0; j < subdivisions.length; j++) {
             pdf.setFillColor(...white);
             pdf.rect(
                 50 + i * colWidth + j * subColWidth,
-                currentY,
+                currentY + 42,
                 subColWidth,
                 8,
                 'F'
@@ -236,22 +246,12 @@ export const generatePDF = async (data: FormData) => {
             pdf.setDrawColor(0, 0, 0);
             pdf.rect(
                 50 + i * colWidth + j * subColWidth,
-                currentY,
+                currentY + 42,
                 subColWidth,
                 8
             );
             // No text - these are empty boxes for marking with dots
         }
-
-        // Large description box
-        if (i % 2 === 0) {
-            pdf.setFillColor(...lightBlue);
-        } else {
-            pdf.setFillColor(220, 235, 255);
-        }
-        pdf.rect(50 + i * colWidth, currentY + 8, colWidth, 42, 'F');
-        pdf.setDrawColor(0, 0, 0);
-        pdf.rect(50 + i * colWidth, currentY + 8, colWidth, 42);
     }
 
     // Implementation descriptions
@@ -271,7 +271,7 @@ export const generatePDF = async (data: FormData) => {
         pdf.text(lines, 51 + i * colWidth, currentY + 12);
     }
 
-    currentY += 50;
+    currentY += 58; // 42 for description + 8 for marking boxes + 8 spacing
 
     // Testing & Test Cases row
     pdf.setFillColor(...lightBlue);
@@ -284,17 +284,27 @@ export const generatePDF = async (data: FormData) => {
     pdf.text('Testing &', 12, currentY + 8);
     pdf.text('Test Cases (40%)', 12, currentY + 15);
 
-    // Score subdivision boxes for Testing - each grade column divided into sub-columns for marking
+    // Testing description and marking boxes
     for (let i = 0; i < 5; i++) {
         const subdivisions = scoreSubdivisions[i];
         const subColWidth = colWidth / subdivisions.length;
 
-        // Create subdivision columns for score selection (empty boxes for marking)
+        // Large description box first
+        if (i % 2 === 0) {
+            pdf.setFillColor(...lightBlue);
+        } else {
+            pdf.setFillColor(220, 235, 255);
+        }
+        pdf.rect(50 + i * colWidth, currentY, colWidth, 42, 'F');
+        pdf.setDrawColor(0, 0, 0);
+        pdf.rect(50 + i * colWidth, currentY, colWidth, 42);
+
+        // Create subdivision columns for score selection (empty boxes for marking) below description
         for (let j = 0; j < subdivisions.length; j++) {
             pdf.setFillColor(...white);
             pdf.rect(
                 50 + i * colWidth + j * subColWidth,
-                currentY,
+                currentY + 42,
                 subColWidth,
                 8,
                 'F'
@@ -302,22 +312,12 @@ export const generatePDF = async (data: FormData) => {
             pdf.setDrawColor(0, 0, 0);
             pdf.rect(
                 50 + i * colWidth + j * subColWidth,
-                currentY,
+                currentY + 42,
                 subColWidth,
                 8
             );
             // No text - these are empty boxes for marking with dots
         }
-
-        // Large description box
-        if (i % 2 === 0) {
-            pdf.setFillColor(...lightBlue);
-        } else {
-            pdf.setFillColor(220, 235, 255);
-        }
-        pdf.rect(50 + i * colWidth, currentY + 8, colWidth, 42, 'F');
-        pdf.setDrawColor(0, 0, 0);
-        pdf.rect(50 + i * colWidth, currentY + 8, colWidth, 42);
     }
 
     // Testing descriptions
@@ -337,7 +337,7 @@ export const generatePDF = async (data: FormData) => {
         pdf.text(lines, 51 + i * colWidth, currentY + 12);
     }
 
-    currentY += 50;
+    currentY += 58; // 42 for description + 8 for marking boxes + 8 spacing
 
     // Clean Code row
     pdf.setFillColor(...lightBlue);
@@ -350,17 +350,27 @@ export const generatePDF = async (data: FormData) => {
     pdf.text('Clean Code', 12, currentY + 8);
     pdf.text('(20%)', 12, currentY + 15);
 
-    // Score subdivision boxes for Clean Code - each grade column divided into sub-columns for marking
+    // Clean Code description and marking boxes
     for (let i = 0; i < 5; i++) {
         const subdivisions = scoreSubdivisions[i];
         const subColWidth = colWidth / subdivisions.length;
 
-        // Create subdivision columns for score selection (empty boxes for marking)
+        // Large description box first
+        if (i % 2 === 0) {
+            pdf.setFillColor(...lightBlue);
+        } else {
+            pdf.setFillColor(220, 235, 255);
+        }
+        pdf.rect(50 + i * colWidth, currentY, colWidth, 42, 'F');
+        pdf.setDrawColor(0, 0, 0);
+        pdf.rect(50 + i * colWidth, currentY, colWidth, 42);
+
+        // Create subdivision columns for score selection (empty boxes for marking) below description
         for (let j = 0; j < subdivisions.length; j++) {
             pdf.setFillColor(...white);
             pdf.rect(
                 50 + i * colWidth + j * subColWidth,
-                currentY,
+                currentY + 42,
                 subColWidth,
                 8,
                 'F'
@@ -368,22 +378,12 @@ export const generatePDF = async (data: FormData) => {
             pdf.setDrawColor(0, 0, 0);
             pdf.rect(
                 50 + i * colWidth + j * subColWidth,
-                currentY,
+                currentY + 42,
                 subColWidth,
                 8
             );
             // No text - these are empty boxes for marking with dots
         }
-
-        // Large description box
-        if (i % 2 === 0) {
-            pdf.setFillColor(...lightBlue);
-        } else {
-            pdf.setFillColor(220, 235, 255);
-        }
-        pdf.rect(50 + i * colWidth, currentY + 8, colWidth, 42, 'F');
-        pdf.setDrawColor(0, 0, 0);
-        pdf.rect(50 + i * colWidth, currentY + 8, colWidth, 42);
     }
 
     // Clean Code descriptions
